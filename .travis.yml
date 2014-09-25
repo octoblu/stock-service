@@ -9,3 +9,11 @@ env: NODE_ENV=test
 branches:
   only:
   - master
+deploy:
+  provider: opsworks
+  access_key_id: AKIAIT4X4NDGM2WVL6VA
+  secret_access_key:
+    secure: Ec6O6uER5DnVUp4iQJuJnegFnB33O2cSJ+EhJSrdorDR/ckozdcLwx5VPLIwu2cqipW+cIo/MyESwxjHCIuY8RWHBzQYpUsIN2Te0VC4DaGs5UrDvaSmHd69z0QFWSD52BDe3rKPyDeBIqYC/LVmJg82x7NutC6E+OjJCxGrQY8=
+  app-id: 9929e0f4-1876-4ed9-8972-bde5a1301212
+  on:
+    branch: master
