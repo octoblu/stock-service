@@ -30,7 +30,6 @@ app.use express.static(path.join(__dirname, 'public'))
 app.use errorHandler()
 
 app.get '/last-trade-price/:symbol', stockController.lastTradePrice
-app.get '/', (req, res) -> res.status(200).send 'Sane Stock API'
 
 app.listen app.get('port'), ->
   console.log "Express server listening on port #{app.get('port')}"
