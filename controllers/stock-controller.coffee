@@ -11,7 +11,7 @@ class StockController
     options =
       url: 'http://download.finance.yahoo.com/d/quotes.csv'
       qs:
-        s: symbol
+        s: symbol.toUpperCase()
         f: 'l1'
     request options, callback
 
