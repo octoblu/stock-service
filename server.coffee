@@ -15,6 +15,13 @@ stockController = new StockController()
 
 app = express()
 
+if process.env.AIRBRAKE_KEY
+  airbrake = require('airbrake').createClient process.env.AIRBRAKE_KEY
+  app.use airbrake.expressHandler()
+else
+  process.on 'uncaughtException', (error) =>
+    console.error error.message, error.stack
+
 app.set 'port', process.env.STOCK_SERVICE_PORT ? process.env.PORT ? 3000
 app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
