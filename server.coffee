@@ -9,11 +9,14 @@ session        = require 'express-session'
 bodyParser     = require 'body-parser'
 multer         = require 'multer'
 errorHandler   = require 'errorhandler'
+meshbluHealthcheck = require 'express-meshblu-healthcheck'
 
 StockController = require './controllers/stock-controller'
 stockController = new StockController()
 
 app = express()
+
+app.use meshbluHealthcheck()
 
 if process.env.AIRBRAKE_KEY
   airbrake = require('airbrake').createClient process.env.AIRBRAKE_KEY
