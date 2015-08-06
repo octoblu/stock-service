@@ -6,16 +6,4 @@ cache:
   directories:
   - node_modules
 env:
-  matrix:
   - NODE_ENV=test
-branches:
-  only:
-  - master
-deploy:
-  provider: opsworks
-  access_key_id: AKIAJH2D5IPIRHYJT5IA
-  secret_access_key:
-    secure: DR6oqPJ4F6gN1zwHtyhxSAG4A5m76iNVdEB6UjUyEL43mAhGve3w4YX5DfwtrBFX+9Upcl5pXkF2bQKbKIvQdC/DKf77OfwPBmE03iEUCaNw6XUYBjX2LTDbEK+2ujdEiEv5XQXALY8Tf5fsZY3/ucJ+7HowX4vrYyFnpWDDnp8=
-  app-id: 9929e0f4-1876-4ed9-8972-bde5a1301212
-  on:
-    branch: master
