@@ -12,7 +12,7 @@ errorHandler   = require 'errorhandler'
 meshbluHealthcheck = require 'express-meshblu-healthcheck'
 
 StockController = require './controllers/stock-controller'
-stockController = new StockController()
+stockController = new StockController(timeout: process.env.REQUEST_TIMEOUT)
 
 app = express()
 
