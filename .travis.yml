@@ -1,11 +1,13 @@
 language: node_js
 node_js:
-  - '0.10'
-cache:
-  bundler: true
-  directories:
-    - node_modules
+  - '5'
 env:
   - NODE_ENV=test
 notifications:
-  webhooks: 'https://deploy-state.octoblu.com/deployments/travis-ci/org'
+  webhooks:
+    - 'https://beekeeper.octoblu.com/webhooks/travis:ci'
+after_success:
+  - npm run coverage
+  - 'npm run mocha:json'
+  - 'bash <(curl -s https://codecov.io/bash)'
+  - 'bash <(curl -s https://codecov.octoblu.com/bash)'

@@ -1,5 +1,4 @@
 request = require 'request'
-_       = require 'lodash'
 
 class StockController
   constructor: ({@timeout}={}) ->
