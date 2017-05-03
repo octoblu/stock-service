@@ -1,7 +1,7 @@
 path           = require 'path'
 express        = require 'express'
 octobluExpress = require 'express-octoblu'
-methodOverride = require 'method-override'
+SigtermHandler = require 'sigterm-handler'
 
 PORT = process.env.PORT ? 80
 
@@ -12,15 +12,14 @@ app.set 'view engine', 'jade'
 app.use express.static path.join(__dirname, 'public')
 
 StockController = require './controllers/stock-controller'
-stockController = new StockController { timeout: process.env.REQUEST_TIMEOUT }
+stockController = new StockController {}
 
 app.get '/last-trade-price/:symbol', stockController.lastTradePrice
+app.get '/stocks/:symbol/last-trade-price', stockController.lastTradePrice
+app.get '/stocks/:symbol', stockController.stockInfo
 
-server = app.listen PORT, ->
+server = app.listen PORT, =>
   console.log "Stock service listening on port #{server.address().port}"
 
-process.on 'SIGTERM', =>
-  console.log 'Dying a clean, honorable death'
-  return process.exit 0 unless server?.close?
-  server.close =>
-    process.exit 0
+sigtermHandler = new SigtermHandler { events: [ 'SIGTERM', 'SIGINT' ] }
+sigtermHandler.register server.close

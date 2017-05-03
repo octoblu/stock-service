@@ -1,3 +1,4 @@
+{describe,beforeEach,it,expect} = global
 request = require 'request'
 
 process.env.PORT = 0xdead
@@ -24,5 +25,24 @@ describe 'Server', ->
     it 'should respond with a 200', ->
       expect(@response.statusCode).to.equal 200
 
-    it 'should respond with online true', ->
+    it 'should respond with a price', ->
       expect(@body.price).to.exist
+
+  describe '/stocks/CTXS/last-trade-price', ->
+    beforeEach (done) ->
+      request.get "http://localhost:#{0xdead}/stocks/CTXS/last-trade-price", { json: true }, (error, @response, @body) =>
+        done error
+
+    it 'should respond with a 200', ->
+      expect(@response.statusCode).to.equal 200
+
+    it 'should respond with a price', ->
+      expect(@body.price).to.exist
+
+  describe '/stocks/CTXS', ->
+    beforeEach (done) ->
+      request.get "http://localhost:#{0xdead}/stocks/CTXS", { json: true }, (error, @response, @body) =>
+        done error
+
+    it 'should respond with a 200', ->
+      expect(@response.statusCode).to.equal 200

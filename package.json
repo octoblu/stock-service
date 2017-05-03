@@ -1,6 +1,6 @@
 {
   "name": "stock-service",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "description": "Sane Stock API",
   "main": "server.js",
   "scripts": {
@@ -28,20 +28,33 @@
     "coffee-script": "^1.11.1",
     "debug": "^2.2.0",
     "express": "^4.14.0",
-    "express-octoblu": "^1.1.1",
+    "express-octoblu": "^3.0.1",
     "jade": "^1.11.0",
-    "lodash": "^4.16.4",
+    "lodash": "^4.17.4",
     "method-override": "^2.3.6",
-    "request": "^2.75.0"
+    "request": "^2.75.0",
+    "sigterm-handler": "^2.0.0",
+    "yahoo-finance": "^0.2.16"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-subset": "^1.3.0",
-    "mocha": "^2.5.3",
-    "mocha-multi": "^0.9.1",
+    "mocha": "^3.3.0",
+    "mocha-multi": "^0.11.0",
     "mocha-osx-reporter": "^0.1.2",
-    "nyc": "^8.3.0",
-    "sinon": "^1.17.6",
+    "nyc": "^10.3.0",
+    "sinon": "^2.2.0",
     "sinon-chai": "^2.8.0"
+  },
+  "nyc": {
+    "cache": true,
+    "reporter": [
+      "text-summary",
+      "lcov",
+      "json"
+    ],
+    "extension": [
+      ".coffee"
+    ]
   }
 }
