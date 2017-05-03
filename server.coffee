@@ -18,8 +18,9 @@ app.get '/last-trade-price/:symbol', stockController.lastTradePrice
 app.get '/stocks/:symbol/last-trade-price', stockController.lastTradePrice
 app.get '/stocks/:symbol', stockController.stockInfo
 
-server = app.listen PORT, =>
+server = app.listen PORT, ->
   console.log "Stock service listening on port #{server.address().port}"
 
 sigtermHandler = new SigtermHandler { events: [ 'SIGTERM', 'SIGINT' ] }
-sigtermHandler.register server.close
+sigtermHandler.register (callback) =>
+  server.close(callback)

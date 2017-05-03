@@ -1,6 +1,6 @@
 {
   "name": "stock-service",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Sane Stock API",
   "main": "server.js",
   "scripts": {
